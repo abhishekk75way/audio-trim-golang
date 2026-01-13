@@ -70,6 +70,60 @@ ALLOWED_AUDIO_TYPES=mp3,wav
 AUDIO_STORAGE_PATH=./storage/audio
 ```
 
+## Project Setup (Go)
+
+### 1. Clone the repository
+
+```
+git clone https://github.com/abhishekk75way/audio-trim-golang
+```
+
+### 2. Create `.env` file in the backend folder
+
+```
+POSTGRES_STR="host=localhost user=postgres password=postgres dbname=authdb port=5432 sslmode=disable"
+PORT="8080"
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASSWORD=your-app-password
+EMAIL_FROM=your-email@gmail.com
+
+FRONTEND_URL=http://localhost:5173
+CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+```
+
+Note:
+
+* Use a Gmail App Password instead of the real account password.
+
+### 3. Create PostgreSQL database
+
+Create a database named:
+
+```
+authdb
+```
+
+### 4. Install Go dependencies
+
+```
+go mod tidy
+```
+
+### 5. Run the backend server
+
+```
+go run cmd/main.go
+```
+
+Default server URL:
+
+```
+http://localhost:8080
+```
+
 ## Notes
 
 * Multiple file uploads are handled as **single jobs**
