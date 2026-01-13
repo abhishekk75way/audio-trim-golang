@@ -1,0 +1,18 @@
+basePath: /api
+host: localhost:8080
+info:
+  contact:
+    email: abhishekk75way@gmail.com
+    name: Abhishek Kushwaha
+  description: API documentation for Authentication & Authorization system
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: http://swagger.io/terms/
+  title: Authentication Backend API
+  version: "1.0"
+paths: {}
+schemes:
+- http
+- https
+swagger: "2.0"
