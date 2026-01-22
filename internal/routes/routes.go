@@ -37,6 +37,7 @@ func Setup(
 	)
 	{
 		protected.POST("/convert", jobH.Convert)
+		protected.GET("/jobs", jobH.GetJobsByUserID)
 		protected.GET("/jobs/:id", jobH.Status)
 		protected.GET("/download/:id", jobH.Download)
 

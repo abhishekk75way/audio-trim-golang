@@ -142,3 +142,25 @@ func (h *Handler) Download(c *gin.Context) {
 
 	c.JSON(500, gin.H{"error": "no downloadable file"})
 }
+
+func (h *Handler) GetJobsByUserID(c *gin.Context) {
+	uid, exists := c.Get("user_id")
+	if !exists {
+		c.JSON(401, gin.H{"error": "unauthorized"})
+		return
+	}
+
+	userID, ok := uid.(uint)
+	if !ok {
+		c.JSON(500, gin.H{"error": "invalid user id"})
+		return
+	}
+
+	jobs, err := h.Jobs.FindAllByUser(userID)
+	if err != nil {
+		c.JSON(404, gin.H{"error": "jobs not found"})
+		return
+	}
+
+	c.JSON(200, jobs)
+}

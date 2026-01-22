@@ -41,3 +41,21 @@ func (r *JobRepo) FindByUser(id uuid.UUID, userID uint) (*models.Job, error) {
 		First(&job).Error
 	return &job, err
 }
+
+func (r *JobRepo) FindByIDAndUser(jobID uuid.UUID, userID uint) (*models.Job, error) {
+	var job models.Job
+	err := r.db.
+		Preload("Files").
+		Where("id = ? AND user_id = ?", jobID, userID).
+		First(&job).Error
+	return &job, err
+}
+
+func (r *JobRepo) FindAllByUser(userID uint) ([]models.Job, error) {
+	var jobs []models.Job
+	err := r.db.
+		Where("user_id = ?", userID).
+		Order("created_at DESC").
+		Find(&jobs).Error
+	return jobs, err
+}

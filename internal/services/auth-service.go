@@ -44,7 +44,7 @@ func (s *AuthService) Login(email, password string) (string, error) {
 	}
 
 	// 🔐 Role-aware JWT
-	return utils.GenerateToken(user.ID, user.Role)
+	return utils.GenerateToken(user.ID, user.Role, user.Email)
 }
 
 func (s *AuthService) ForgotPassword(email string) (bool, error) {
